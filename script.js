@@ -3,6 +3,22 @@ const button = document.querySelector('.btn-action');
 const ball = document.querySelector('.ball');
 const spring = document.querySelector('.spring');
 const bar = document.querySelector('.bar');
+const box = document.querySelector('.box');
+
+
+const position = () => {
+    let randomPositionOfBox = Math.floor(Math.random() * 100) - 20;
+    
+    if (randomPositionOfBox > 0 && randomPositionOfBox < 80) {
+        box.style.right = `${randomPositionOfBox}%`;
+ 
+    } else {
+        randomPositionOfBox = 50;
+    }
+
+}
+
+position();
 
 
 
@@ -33,12 +49,13 @@ const releaseSpring = () => {
     button.removeEventListener('mousedown', stretchSpring);
     button.removeEventListener('touchstart', stretchSpring);
 
-    document.documentElement.style.setProperty("--power-x", `${power+20}%`); //HTML style
+    document.documentElement.style.setProperty("--power-x", `${power + 20}%`); //HTML style
     ball.style.animation = 'fly-ball-x 1s 1 forwards .15s cubic-bezier(.17, .67, .6, 1), fly-ball-y 1s 1 forwards .15s linear';
 
     document.documentElement.style.setProperty("--spring-left", getComputedStyle(spring).left);
     spring.style.animation = 'release-spring .2s 1 forwards linear';
 
+  
     // blocking click
 
     button.removeEventListener('mouseup', stretchSpring);
@@ -63,7 +80,8 @@ const resetAnimation = () => {
 
         spring.style.animation = '';
         ball.style.animation = '';
-        fill.style.animationName = 'none'
+        fill.style.animationName = 'none';
+        position();
 
     }, 2000)
 
