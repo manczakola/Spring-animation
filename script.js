@@ -8,10 +8,10 @@ const box = document.querySelector('.box');
 
 const position = () => {
     let randomPositionOfBox = Math.floor(Math.random() * 100) - 20;
-    
+
     if (randomPositionOfBox > 0 && randomPositionOfBox < 80) {
         box.style.right = `${randomPositionOfBox}%`;
- 
+
     } else {
         randomPositionOfBox = 50;
     }
@@ -55,7 +55,7 @@ const releaseSpring = () => {
     document.documentElement.style.setProperty("--spring-left", getComputedStyle(spring).left);
     spring.style.animation = 'release-spring .2s 1 forwards linear';
 
-  
+
     // blocking click
 
     button.removeEventListener('mouseup', stretchSpring);
